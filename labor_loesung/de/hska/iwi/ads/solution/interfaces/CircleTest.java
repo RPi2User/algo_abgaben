@@ -18,7 +18,19 @@ class CircleTest {
    */
   @Test
   void testCircleDouble() {
-    fail("Not yet implemented");
+    boolean success = false;
+
+    try {
+        Circle c = new Circle(-10);
+    }
+    catch (IllegalArgumentException e) {
+        success = true;
+    }
+    catch (Exception e) {
+        success = false;
+    }
+
+    assertTrue(success);
   }
   
   /*
@@ -29,7 +41,10 @@ class CircleTest {
    */
   @Test
   void testScale1() {
-    fail("Not yet implemented");
+    Circle c = new Circle(1.5);
+    c.scale(2.0);
+
+    assertEquals(3.0, c.getRadius(), 0.01);
   }
 
   /*
@@ -38,7 +53,8 @@ class CircleTest {
    */
   @Test
   void testArea1() {
-    fail("Not yet implemented");
+    Circle c = new Circle(1.0);
+    assertEquals(Math.PI, c.area(), 0.01);
   }
 
   /*
@@ -47,7 +63,8 @@ class CircleTest {
    */
   @Test
   void testArea2() {
-    fail("Not yet implemented");
+      Circle c = new Circle(2.0);
+      assertEquals((4 * Math.PI), c.area(), 0.01);
   }
 
 
@@ -57,7 +74,8 @@ class CircleTest {
    */
   @Test
   void testGetRadius1() {
-    fail("Not yet implemented");
+    Circle c = new Circle(1.0);
+    assertEquals(1.0, c.getRadius(), 0.01);
   }
 
 }

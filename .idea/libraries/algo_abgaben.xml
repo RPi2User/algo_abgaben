@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="algo_abgaben">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/labor_loesung.zip!/" />
+      <root url="jar://$PROJECT_DIR$/labor.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
