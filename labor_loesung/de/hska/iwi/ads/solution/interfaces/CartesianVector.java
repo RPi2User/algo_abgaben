@@ -3,6 +3,8 @@ package de.hska.iwi.ads.solution.interfaces;
 import de.hska.iwi.ads.interfaces.Vector;
 
 public class CartesianVector implements Vector {
+    // can hardcode this here, because all carteisan vectors are scaleable
+    private final int DIMENSION = 2;
 
     private double x,y;
 
@@ -68,7 +70,8 @@ public class CartesianVector implements Vector {
      */
     @Override
     public void scale(double factor) {
-
+        this.x *= factor;
+        this.y *= factor;
     }
 
     /**
@@ -76,6 +79,6 @@ public class CartesianVector implements Vector {
      */
     @Override
     public double getDimension() {
-        return 0;
+        return DIMENSION;
     }
 }
