@@ -8,7 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="JUnit5">
+      <library>
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter/5.14.0/junit-jupiter-5.14.0.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.14.0/junit-jupiter-api-5.14.0.jar!/" />
@@ -23,7 +23,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="labor" />
-    <orderEntry type="module" module-name="labor" />
   </component>
 </module>

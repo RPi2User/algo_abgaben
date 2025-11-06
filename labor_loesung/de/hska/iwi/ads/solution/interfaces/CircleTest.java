@@ -36,7 +36,7 @@ class CircleTest {
   /*
    * Create a Circle with radius 1.5.
    * Scale it by a factor of 2.0.
-   * Check that afterwards the Circle 
+   * Check that afterward the Circle
    * has a radius near 3.0.
    */
   @Test
