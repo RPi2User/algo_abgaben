@@ -17,7 +17,7 @@ public class MergesortTest {
         Integer sol[] = {0,1,2,3};
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class MergesortTest {
         Integer sol[] = {0,1,2,3};
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class MergesortTest {
         Integer sol[] = {0,0,0,3};
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class MergesortTest {
         Integer sol[] = {};
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MergesortTest {
 
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test
@@ -95,6 +95,6 @@ public class MergesortTest {
 
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 }

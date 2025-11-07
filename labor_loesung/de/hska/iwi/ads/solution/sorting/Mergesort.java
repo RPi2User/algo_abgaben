@@ -27,9 +27,9 @@ public class Mergesort<E extends Comparable<E>> extends AbstractMergesort<E> {
     protected void merge(E[] a, int left, int m, int right){
         int _left = left;
         int _right = m + 1;
-        for (int i = left; i < right; i++ ){
-            if(_right > right || (left <= m && (a[_left].compareTo(a[_right]) <= 0))){
-                this.b[i] = a[i];
+        for (int i = left; i <= right; i++ ){
+            if(_right > right || (_left <= m && (a[_left].compareTo(a[_right]) <= 0))){
+                this.b[i] = a[_left];
                 _left++;
             }
             else{
@@ -37,7 +37,7 @@ public class Mergesort<E extends Comparable<E>> extends AbstractMergesort<E> {
                 _right++;
             }
         }
-        for (int i = left; i < right; i++){
+        for (int i = left; i <= right; i++){
             a[i] = b[i];
         }
     }
