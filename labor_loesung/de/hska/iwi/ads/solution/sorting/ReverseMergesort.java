@@ -25,24 +25,30 @@ public class ReverseMergesort<E extends Comparable<E>> extends AbstractMergesort
     }
 
     protected void merge(E[] a, int left, int m, int right){
+        ReverseArray<E> r = new ReverseArray<E>();
+        // 1. reverse right half (second half)
+        if (m + 1 <= right) {   // only |sub-array| > 1 need to be reversed
+            r.reverse(a, m + 1, right);
+        }
+
+        // Temporary Variables
         int _left = left;
         int _right = right;
-        ReverseArray<E> r = new ReverseArray<E>();
 
-        r.reverse(a,0,a.length-1);
-
-
-        for (int i = left; i <= right; i++ ){
-            if(a[_left].compareTo(a[_right]) <= 0){
-                this.b[i] = a[_left];
+        for (int i = left; i <= right; i++) {
+            // If current left (_left) is smaller than current right...
+            // AND we are currently in boundaries -> hence we are in-/decrementing without further checks
+            if (_left <= m && (_right < m + 1 || a[_left].compareTo(a[_right]) <= 0)) {
+                b[i] = a[_left];
                 _left++;
-            }
-            else{
+            } else {
+                // else (right > left)
                 b[i] = a[_right];
                 _right--;
             }
         }
-        for (int i = left; i <= right; i++){
+        // a := b
+        for (int i = left; i <= right; i++) {
             a[i] = b[i];
         }
     }

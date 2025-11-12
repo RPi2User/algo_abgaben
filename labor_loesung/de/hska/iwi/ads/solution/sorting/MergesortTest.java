@@ -11,7 +11,7 @@ public class MergesortTest {
     }
 
     @Test
-    void custom_0() {
+    void custom0() {
         Mergesort<Integer> m = this.createSort();
         Integer a[] = {0,1,2,3};
         Integer sol[] = {0,1,2,3};
@@ -20,11 +20,68 @@ public class MergesortTest {
         assertArrayEquals(sol, m.getB());
     }
 
+
     @Test
-    void custom_1() {
+    void custom1() {
         Mergesort<Integer> m = this.createSort();
         Integer a[] = {3,2,1,0};
         Integer sol[] = {0,1,2,3};
+        m.sort(a);
+
+        assertArrayEquals(sol, m.getB());
+    }
+
+    @Test
+    void custom_Small0(){
+        Mergesort<Integer> m = this.createSort();
+        Integer a[] = {0};
+        Integer sol[] = {0};
+        m.sort(a);
+
+        assertArrayEquals(sol, m.getB());
+    }
+
+    @Test
+    void custom_Small1(){
+        Mergesort<Integer> m = this.createSort();
+        Integer a[] = {1,0};
+        Integer sol[] = {0,1};
+        m.sort(a);
+
+        assertArrayEquals(sol, m.getB());
+    }
+
+    @Test
+    void custom_Err0(){
+        Mergesort<Integer> m = this.createSort();
+        Integer a[] = {0};
+        Integer sol[] = {0};
+        m.sort(a);
+
+        assertArrayEquals(sol, m.getB());
+    }
+
+    @Test
+    void custom_Err1(){
+        Mergesort<Integer> m = this.createSort();
+        Integer a[] = null;
+
+        try {
+            m.sort(a); // This shall throw a NullPointerException caused from b := a
+        }
+        catch (NullPointerException e){
+            assertTrue(true);
+        }
+        catch (Exception e){
+            assertTrue(false);
+        }
+    }
+
+    @Test
+    void custom_Err2(){
+        Mergesort<Integer> m = this.createSort();
+        Integer a[] = {null};
+        Integer sol[] = {null};
         m.sort(a);
 
         assertArrayEquals(sol, m.getB());
@@ -48,32 +105,6 @@ public class MergesortTest {
         m.sort(a);
 
         assertArrayEquals(a, m.getB());
-    }
-
-    @Test
-    void custom_invalid1() {
-        Mergesort<Integer> m = this.createSort();
-        Integer a[] = {};
-        Integer sol[] = {};
-        m.sort(a);
-
-        assertArrayEquals(sol, m.getB());
-    }
-
-    @Test
-    void custom_invalid2() {
-        Mergesort<Integer> m = this.createSort();
-        Integer a[] = null;
-        Integer sol[] = null;
-
-        try{
-            m.sort(a);  // sort() has no exception handling specified
-        }
-        catch (NullPointerException e){
-            assertTrue(true);
-            return;
-        }
-        assertTrue(false);
     }
 
     @Test
