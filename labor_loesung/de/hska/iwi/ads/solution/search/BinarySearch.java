@@ -39,17 +39,18 @@ public class BinarySearch<E extends Comparable<E>> implements Search<E> {
         int previous_left = left;
         int previous_right = right;
 
-        // Quick checks against endpoints
+        // Quick checks against endpoints whether the key is in range.
         if (key.compareTo(a[previous_left]) < 0) {
-            return previous_left - 1;
+            return previous_left - 1; // return left--
         }
         if (key.compareTo(a[previous_right]) > 0) {
-            return previous_right + 1;
+            return previous_right + 1; // return right++
         }
 
+        // Key is in range, Left & Right is inbounds. Continue without recursion
 
         int insertPos = 0;
-        int index = ((right - left) / 2) + left; // die MITTE != CVP
+        int index = ((right - left) / 2) + left;
 
         while (left <= right) {
             index = left + (right - left) / 2;  // calc current index

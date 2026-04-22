@@ -104,7 +104,7 @@ public class MergesortTest {
         Integer sol[] = {0,0,0,1};
         m.sort(a);
 
-        assertArrayEquals(a, m.getB());
+        assertArrayEquals(sol, m.getB());
     }
 
     @Test

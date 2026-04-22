@@ -16,9 +16,9 @@ public class BinarySearchTest extends SearchTest {
     @Test
     void custom_sanity0() {
         BinarySearch<Integer> search = createSearch();
-        Integer [] a = {0, 1, 1, 2, 3, 4};
+        Integer [] a = {0, 1, 1, 3, 4};
 
-        assertEquals(5, search.search(a, 4));
+        assertEquals(3, search.search(a, 2));
         int a_length = ((int)(Math.log(a.length) / Math.log(2)));
         if ((Math.log(a.length) / Math.log(2)) > a_length) a_length++;  // Immer Aufrunden.
         boolean complexity = (search.getIterations() <= a_length);
