@@ -1,6 +1,13 @@
 package de.hska.iwi.ads.solution.list;
 
+import de.hska.iwi.ads.dictionary.AbstractDoubleLinkedList;
 import de.hska.iwi.ads.dictionary.MapTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+
+import java.util.AbstractMap;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DoubleLinkedListTest extends MapTest {
     /**
@@ -17,5 +24,57 @@ public class DoubleLinkedListTest extends MapTest {
     @Override
     public <K extends Comparable<K>, V> DoubleLinkedList createMap() {
         return new DoubleLinkedList();
+    }
+
+    @Test
+    void sanity01(){     // this tests the core structure of this data type
+        DoubleLinkedList list = this.createMap();
+        assertEquals(list.getHead(), null);
+        assertEquals(list.getTail(), null);
+
+        list.put(1, "first");
+
+        // testing if list.head & list.tail is leading and terminating correctly
+        assertEquals(list.getTail().previous, null);
+        assertEquals(list.getHead().next, null);
+        assertEquals(list.getTail().next, list.getHead().previous); // should point at the same mem address
+        assertEquals(list.size(), 1);
+
+        assertEquals(list.getHead().entry.getKey(), 1);
+        assertEquals(list.getTail().entry.getKey(), 1);
+
+        assertEquals(list.getHead().entry.getValue(), "first");
+        assertEquals(list.getTail().entry.getValue(), "first");
+
+    }
+
+    @Test
+    void sanity02_override(){ // this checks .put() override
+        DoubleLinkedList list = this.createMap();
+        assertEquals(list.getHead(), null);
+        assertEquals(list.getTail(), null);
+
+        assertEquals(list.put(1, "first"), null);
+        assertEquals(list.put(1, "one"), "first");
+
+        assertEquals(list.getTail().previous, null);
+        assertEquals(list.getHead().next, null);
+        assertEquals(list.getTail().next, list.getHead().previous);
+
+    }
+
+    @Test
+    void sanity03_append(){ // this checks .put() with a non-null list
+        DoubleLinkedList list = this.createMap();
+        assertEquals(list.getHead(), null);
+        assertEquals(list.getTail(), null);
+
+        assertEquals(list.put(1, "first"), null);   // e.g. 0x100
+        assertEquals(list.put(2, "second"), null);  // 0x200
+
+        assertEquals(list.getTail().previous, null);
+        assertEquals(list.getHead().next, null);
+        assertNotEquals(list.getTail().next, list.getHead().previous); // 0x100 != 0x200
+
     }
 }

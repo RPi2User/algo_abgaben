@@ -24,7 +24,7 @@ public abstract class MapTest {
  
    private Map<Integer, String> commonTestMap;
    
-   @BeforeEach
+   @Test
    void setUp() {
      // Map with 1,2,3,4, 6,7,8
      commonTestMap = createMap();
