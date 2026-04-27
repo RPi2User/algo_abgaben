@@ -21,16 +21,21 @@ public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleL
 
     public V get(Object o) {
 
-        while (it.hasNext()) {
-            System.out.println("TEST");
-            it.next();
-        }
-
+        if (o == null)
+            throw new NullPointerException();
 
         if (this.head == null)
             return null;
 
-        return this.head.entry.getValue();
+        Iterator<Entry<K, V>> it = this.iterator();
+        while (it.hasNext()) {
+            Entry<K,V> _e =  it.next();
+            if (_e.getKey().equals((K) o)){
+                return _e.getValue();
+            }
+        }
+
+        return null;
     }
         /* trash:
         while (this.head != null && this.head.entry.getKey() != (K) o){
@@ -52,6 +57,10 @@ public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleL
         }*/
 
     public V put(K key, V value){
+
+        if (key == null)
+            throw new NullPointerException();
+
         ListElement _tmp = new ListElement(
             new SimpleEntry<K,V>(key, value),
             null,
@@ -68,6 +77,7 @@ public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleL
         // Sequenzielle Suche nach KEY bis Listenende
         // Danach wird this.head.next = _tmp gemacht
 
+        Iterator<Entry<K, V>> it = this.iterator();
         while (it.hasNext()) {
             Entry<K,V> _e =  it.next();
             if (_e.getKey().equals(key)) {
@@ -77,13 +87,13 @@ public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleL
             }
         }
 
-        // after loop we are at head[len] hence head.next -> null
-        _tmp.next = this.head.next; // preserve null
-        _tmp.previous = this.head;  // link new head to old one
-        this.head = _tmp;           // promote tmp to new head
-        this.head.previous.next = this.head;
+        // after loop we are at tail[len] hence tail.next -> null
+        _tmp.next = this.tail.next; // preserve tail.next (null) to newTail.next (null)
+        _tmp.previous = this.tail;  // make current tail the former one
+        this.tail.next = _tmp;
+        this.tail = this.tail.next; // go to the next element
 
-        this.size++;
+        this.size++;    // update size
         return null;
     }
 }

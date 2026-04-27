@@ -37,7 +37,7 @@ public class DoubleLinkedListTest extends MapTest {
         // testing if list.head & list.tail is leading and terminating correctly
         assertEquals(list.getTail().previous, null);
         assertEquals(list.getHead().next, null);
-        assertEquals(list.getTail().next, list.getHead().previous); // should point at the same mem address
+
         assertEquals(list.size(), 1);
 
         assertEquals(list.getHead().entry.getKey(), 1);
@@ -72,9 +72,24 @@ public class DoubleLinkedListTest extends MapTest {
         assertEquals(list.put(1, "first"), null);   // e.g. 0x100
         assertEquals(list.put(2, "second"), null);  // 0x200
 
-        assertEquals(list.getTail().previous, null);
-        assertEquals(list.getHead().next, null);
-        assertNotEquals(list.getTail().next, list.getHead().previous); // 0x100 != 0x200
+        assertEquals(list.getTail().next, null);
+        assertEquals(list.getHead().previous, null);
+        assertNotEquals(list.getTail().previous, list.getHead().next); // 0x100 != 0x200
 
+        assertEquals(list.getHead().entry.getValue(), "first");
+        assertEquals(list.getTail().entry.getValue(), "second");
+    }
+
+    @Test
+    void sanity04_get(){
+        DoubleLinkedList list = this.createMap();
+
+        assertEquals(list.put(1, "first"), null);   // e.g. 0x100
+        assertEquals(list.put(2, "second"), null);  // 0x200
+
+        assertEquals(list.get(1), "first");
+        assertNotEquals(list.get(2), "first");
+
+        assertEquals(list.get(156), null);
     }
 }

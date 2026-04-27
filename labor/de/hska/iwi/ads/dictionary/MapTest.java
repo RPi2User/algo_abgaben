@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,7 @@ public abstract class MapTest {
  
    private Map<Integer, String> commonTestMap;
    
-   @Test
+   @BeforeEach
    void setUp() {
      // Map with 1,2,3,4, 6,7,8
      commonTestMap = createMap();
