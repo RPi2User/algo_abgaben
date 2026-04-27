@@ -8,7 +8,6 @@ import java.util.List;
 
 public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleLinkedList<K, V> {
 
-    public Iterator<Entry<K,V>> it = this.iterator();
     private ListElement tail;
 
     public ListElement getHead() { return this.head; }
@@ -37,24 +36,6 @@ public class DoubleLinkedList<K extends Comparable<K>,V> extends AbstractDoubleL
 
         return null;
     }
-        /* trash:
-        while (this.head != null && this.head.entry.getKey() != (K) o){
-            // iterate until head.entry.key == o
-            this.head = this.head.next;
-        }
-
-        try {
-            // this separates the two cases:
-            // 1) head.entry.key = o
-            //    -> Return the value
-            // 2) head.entry = null
-            //    -> null.getValue() raises an Exception
-
-            return this.head.entry.getValue();
-        }
-        catch (Exception e) {
-            return null; // o is not in list
-        }*/
 
     public V put(K key, V value){
 
