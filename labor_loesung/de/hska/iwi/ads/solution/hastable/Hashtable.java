@@ -1,5 +1,7 @@
 package de.hska.iwi.ads.solution.hastable;
 
+import de.hska.iwi.ads.dictionary.AbstractDictionary;
+
 import java.util.Iterator;
 
 class Hashtable<K extends Comparable<K>,V> extends de.hska.iwi.ads.dictionary.AbstractHashMap<K, V> {
@@ -35,7 +37,7 @@ class Hashtable<K extends Comparable<K>,V> extends de.hska.iwi.ads.dictionary.Ab
             }
         }
 
-        return null; // ah lol: Wenn die Liste done ist, sind wir auch done :3
+        throw new AbstractDictionary.DictionaryFullException();
     }
 
     public V put(K key, V value){
